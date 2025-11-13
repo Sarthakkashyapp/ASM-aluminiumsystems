@@ -13,7 +13,7 @@ export default function Hero() {
       {/* softer background glow */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_30%_10%,#eef2f6_0%,transparent_60%)]" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-26 pb-26">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 lg:pt-26 pb-26">
         {/* 2-column layout on lg+ */}
         <div className="grid items-center gap-10 lg:grid-cols-12">
           {/* LEFT: copy */}
