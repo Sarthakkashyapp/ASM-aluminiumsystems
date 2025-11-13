@@ -1,8 +1,9 @@
 // components/services/industry-skill.tsx
 "use client";
 
-import { motion, useMotionValue, animate } from "framer-motion";
-import { useEffect } from "react";
+import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+// import { useEffect } from "react";
 
 type Skill = { label: string; value: number };
 
@@ -14,33 +15,44 @@ const DEFAULT_SKILLS: Skill[] = [
 ];
 
 function SkillBar({ label, value }: Skill) {
-  // number counter
-  const count = useMotionValue(0);
-//   const rounded = useTransform(count, (latest) => Math.round(latest));
+  // animated numeric counter (works reliably on mobile/desktop)
+  const [count, setCount] = useState(0);
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
-    const controls = animate(count, value, { duration: 1.2 });
-    return controls.stop;
-  }, [value, count]);
+    const duration = 1100; // ms
+    const start = performance.now();
+
+    function step(now: number) {
+      const t = Math.min(1, (now - start) / duration);
+      const eased = t; // linear easing; change if you want easing
+      setCount(Math.round(eased * value));
+      if (t < 1) {
+        rafRef.current = requestAnimationFrame(step);
+      }
+    }
+
+    rafRef.current = requestAnimationFrame(step);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [value]);
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between text-[15px] font-semibold text-gray-900">
         <span>{label}</span>
-        <motion.span>
-           {value}%
-        </motion.span>
+        <span>{count}%</span>
       </div>
 
       {/* track */}
       <div className="h-2.5 w-full rounded-full bg-white/30">
-        {/* fill */}
+        {/* fill: animate on mount (not whileInView) so mobile works */}
         <motion.div
           initial={{ width: 0 }}
-          whileInView={{ width: `${value}%` }}
-          viewport={{ once: true, margin: "-80px" }}
+          animate={{ width: `${value}%` }}         // <-- changed from whileInView to animate
           transition={{ duration: 1.1, ease: "easeOut" }}
-          className="h-2.5 rounded-full bg-linear-to-r from-neutral-500 via-gray-700 to-gray-800"
+          className="h-2.5 rounded-full bg-linear-to-r from-neutral-500 via-gray-700 to-gray-800" // keep your original classes/colors
           aria-valuemin={0}
           aria-valuemax={100}
           aria-valuenow={value}
@@ -51,6 +63,7 @@ function SkillBar({ label, value }: Skill) {
     </div>
   );
 }
+
 
 export default function IndustrySkillSection({
   skills = DEFAULT_SKILLS,
