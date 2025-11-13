@@ -88,8 +88,8 @@ export default function Header() {
                 {item.label}
               </a>
             ))}
-            <Link href="#quote" onClick={() => setOpen(false)}>
-              <Button className="mt-1 rounded-xl h-9 w-full text-sm">Get a Quote</Button>
+            <Link href="/contact-us" onClick={() => setOpen(false)}>
+              <Button className="mt-1 rounded-xl h-9 w-full text-sm">Contact Us</Button>
             </Link>
           </nav>
         </div>

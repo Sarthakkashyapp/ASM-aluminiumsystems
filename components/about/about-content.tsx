@@ -156,7 +156,7 @@ export default function AboutContent() {
                   <Building2 className="h-6 w-6" />
                 </span>
                 <div>
-                  <p className="font-semibold">ASM Aluminium Frames</p>
+                  <p className="font-semibold">ASM Aluminium Systems</p>
                   <p className="text-sm text-neutral-600">Plot 12, Industrial Area, New Delhi</p>
                 </div>
               </div>
