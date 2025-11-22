@@ -18,19 +18,43 @@ export default function TestimonialSection() {
       quote:
         "ASM delivered flawless frames for our new HQ—on schedule and within budget.",
       name: "Priya Sharma",
-      role: "Admin, Skyline Realty",
+      role: "Admin, HVR SOLAR Pvt. Ltd.",
     },
     {
       quote:
         "Fantastic quality and responsive team. We recommend ASM for any commercial fit-out.",
       name: "Rahul Mehta",
-      role: "Project Lead, Vertex Builders",
+      role: "Project Lead, ALPEX Solar Ltd.",
     },
     {
       quote:
         "From design to installation, the process was smooth and professional.",
       name: "Aisha Khan",
-      role: "Owner, Craft Café",
+      role: "Owner, Satvik Green Energy Pvt. Ltd.",
+    },
+    {
+      quote:
+        "From design to installation, the process was smooth and professional.",
+      name: "Aisha Khan",
+      role: "Owner, HR Solar Solution Pvt. Ltd.",
+    },
+    {
+      quote:
+        "From design to installation, the process was smooth and professional.",
+      name: "Aisha Khan",
+      role: "Owner, Solitech Green Energy Pvt. Ltd.",
+    },
+    {
+      quote:
+        "From design to installation, the process was smooth and professional.",
+      name: "Aisha Khan",
+      role: "Owner, Fujiyama Power Systems Limited",
+    },
+    {
+      quote:
+        "From design to installation, the process was smooth and professional.",
+      name: "Aisha Khan",
+      role: "Owner, ADM Solar Power & Infrastructure Pvt. Ltd.",
     },
   ];
 
@@ -87,8 +111,8 @@ export default function TestimonialSection() {
                     “{t.quote}”
                   </p>
                   <div className="mt-6">
-                    <p className="text-base font-semibold">{t.name}</p>
-                    <p className="text-sm text-neutral-600">{t.role}</p>
+                    {/* <p className="text-base font-semibold">{t.name}</p> */}
+                    <p className="text-base font-semibold">{t.role}</p>
                   </div>
                 </CardContent>
               </Card>

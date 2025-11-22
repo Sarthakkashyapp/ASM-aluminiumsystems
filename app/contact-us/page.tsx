@@ -12,14 +12,15 @@ export const metadata: Metadata = {
 
 const CONTACT = {
   email: "asmalusystem@gmail.com",
+  phoneDisplay2: "+91 9871104831",
   phoneDisplay: "+91 8923925982",
   phoneHref: "+918923925982",
   optPhone: "+91 9837840510",
   optPhoneHref: "+919837840510",
-  addressLine1: "ISKCON Temple, East of Kailash",
-  addressLine2: "New Delhi, Delhi 110065",
+  addressLine1: "C-157, Hoisery Complex. Noida Phase-2",
+  addressLine2: "UttarPradesh, Noida 201305",
   mapQuery:
-    "ISKCON Temple, East of Kailash, New Delhi, Delhi 110065",
+    "Industrial Phase 2nd Block A Road, Hosiery Complex, Block C, Block A, Phase-2, Noida, Uttar Pradesh 201304, India",
 };
 
 export default function ContactPage() {
@@ -74,6 +75,7 @@ export default function ContactPage() {
                 </span>
                 <div>
                   <p className="text-sm lg:text-lg text-neutral-500">Phone</p>
+                  <p className="font-semibold">{CONTACT.phoneDisplay2}</p>
                   <p className="font-semibold">{CONTACT.phoneDisplay}</p>
                   <p className="font-semibold">{CONTACT.optPhone}</p>
                 </div>

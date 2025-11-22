@@ -3,16 +3,13 @@
 export default function CarouselSection() {
   // ✅ define client names inside the component
   const clients = [
-    "Larsen & Toubro",
-    "DLF",
-    "Tata Projects",
-    "Godrej",
-    "HCL",
-    "ITC",
-    "Jindal",
-    "Adani",
-    "JSW",
-    "Infosys",
+    "HVR SOLAR",
+    "ALPEX Solar",
+    "Satvik Green Energy",
+    "HR Solar Solution",
+    "Solitech Green Energy",
+    "Fujiyama Power Systems",
+    "ADM Solar Power & Infrastructure",
   ];
 
   return (

@@ -49,9 +49,11 @@ export default function Footer() {
         <div>
           <p className="font-semibold">Contact</p>
           <ul className="mt-3 space-y-2 text-sm text-neutral-400">
+            <li className="flex items-center gap-2"><Phone className="h-4 w-4" /> +91 9871104831</li>
+            <li className="flex items-center gap-2"><Phone className="h-4 w-4" /> +91 9837840510</li>
             <li className="flex items-center gap-2"><Phone className="h-4 w-4" /> +91 8923925982</li>
             <li className="flex items-center gap-2"><Mail className="h-4 w-4" /> asmalusystem@gmail.com</li>
-            <li className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Plot 12, Industrial Area, New Delhi</li>
+            <li className="flex items-center gap-2"><MapPin className="h-4 w-4" />C-157, Hoisery Complex, Noida Phase-2, UttarPradesh, 201305</li>
           </ul>
         </div>
       </div>
