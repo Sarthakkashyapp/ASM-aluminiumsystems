@@ -17,8 +17,8 @@ export default function AboutSection({ foundingYear = 2020 }: AboutProps) {
             About ASM
           </p>
 
-          <h2 className="mt-2 text-4xl lg:text-5xl font-semibold tracking-tight">
-            Aluminium Framing Specialists with {years}+ Years of Experience
+          <h2 className="mt-2 text-4xl lg:text-5xl font-semibold tracking-normal">
+            Reliable Aluminium Framing Solutions Designed for Every Project
           </h2>
 
           <p className="mt-3 text-neutral-600 text-lg">

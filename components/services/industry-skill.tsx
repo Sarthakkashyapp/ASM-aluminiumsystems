@@ -1,9 +1,8 @@
 // components/services/industry-skill.tsx
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-// import { useEffect } from "react";
 
 type Skill = { label: string; value: number };
 
@@ -14,29 +13,35 @@ const DEFAULT_SKILLS: Skill[] = [
   { label: "On-site Installation", value: 85 },
 ];
 
-function SkillBar({ label, value }: Skill) {
+type SkillBarProps = Skill & { active: boolean };
+
+function SkillBar({ label, value, active }: SkillBarProps) {
   // animated numeric counter (works reliably on mobile/desktop)
   const [count, setCount] = useState(0);
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
-    const duration = 1100; // ms
-    const start = performance.now();
+  if (!active) return;
 
-    function step(now: number) {
-      const t = Math.min(1, (now - start) / duration);
-      const eased = t; // linear easing; change if you want easing
-      setCount(Math.round(eased * value));
-      if (t < 1) {
-        rafRef.current = requestAnimationFrame(step);
-      }
+  const duration = 1100;
+  const start = performance.now();
+
+  function step(now: number) {
+    const t = Math.min(1, (now - start) / duration);
+    const eased = t;
+    setCount(Math.round(eased * value));
+    if (t < 1) {
+      rafRef.current = requestAnimationFrame(step);
     }
+  }
 
-    rafRef.current = requestAnimationFrame(step);
-    return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    };
-  }, [value]);
+  rafRef.current = requestAnimationFrame(step);
+
+  return () => {
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+  };
+}, [value, active]);
+
 
   return (
     <div className="space-y-6">
@@ -47,12 +52,12 @@ function SkillBar({ label, value }: Skill) {
 
       {/* track */}
       <div className="h-2.5 w-full rounded-full bg-white/30">
-        {/* fill: animate on mount (not whileInView) so mobile works */}
+        {/* fill: now tied to `active`, so it animates when in view */}
         <motion.div
           initial={{ width: 0 }}
-          animate={{ width: `${value}%` }}         // <-- changed from whileInView to animate
+          animate={{ width: active ? `${value}%` : "0%" }}
           transition={{ duration: 1.1, ease: "easeOut" }}
-          className="h-2.5 rounded-full bg-linear-to-r from-neutral-500 via-gray-700 to-gray-800" // keep your original classes/colors
+          className="h-2.5 rounded-full bg-linear-to-r from-neutral-500 via-gray-700 to-gray-800" // your original classes/colors
           aria-valuemin={0}
           aria-valuemax={100}
           aria-valuenow={value}
@@ -64,7 +69,6 @@ function SkillBar({ label, value }: Skill) {
   );
 }
 
-
 export default function IndustrySkillSection({
   skills = DEFAULT_SKILLS,
   imageUrl = "https://images.unsplash.com/photo-1762715461119-cbd8d82a0aee?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDZ8TThqVmJMYlRSd3N8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=60&w=600",
@@ -72,6 +76,13 @@ export default function IndustrySkillSection({
   skills?: Skill[];
   imageUrl?: string;
 }) {
+  // track when the right column (text + progress) comes into view
+  const rightColRef = useRef<HTMLDivElement | null>(null);
+  const isInView = useInView(rightColRef, {
+    once: true,
+    margin: "-100px", // trigger a bit before it fully hits center
+  });
+
   return (
     <section className="relative overflow-hidden">
       {/* subtle background using our theme */}
@@ -93,7 +104,7 @@ export default function IndustrySkillSection({
           </div>
 
           {/* Right: text + progress */}
-          <div className="lg:col-span-6 text-white">
+          <div ref={rightColRef} className="lg:col-span-6 text-white">
             <p className="text-sm font-semibold tracking-[0.2em] uppercase text-neutral-500">
               Our Industry Skill
             </p>
@@ -107,7 +118,7 @@ export default function IndustrySkillSection({
 
             <div className="mt-8 space-y-6">
               {skills.map((s) => (
-                <SkillBar key={s.label} {...s} />
+                <SkillBar key={s.label} label={s.label} value={s.value} active={isInView} />
               ))}
             </div>
           </div>

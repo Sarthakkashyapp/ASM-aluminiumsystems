@@ -28,13 +28,13 @@ const SERVICES: Service[] = [
     img: "/services/shot-blasting.jpeg",
     Icon: Factory,
   },
-  {
-    key: "powder-coating",
-    title: "Powder Coating",
-    desc: "Durable, consistent powder coated finishes with multiple texture and colour options.",
-    img: "/services/powder-coating.jpg",
-    Icon: Wrench,
-  },
+  // {
+  //   key: "powder-coating",
+  //   title: "Powder Coating",
+  //   desc: "Durable, consistent powder coated finishes with multiple texture and colour options.",
+  //   img: "/services/powder-coating.jpg",
+  //   Icon: Wrench,
+  // },
   {
     key: "fabrication",
     title: "Fabrication",

@@ -21,14 +21,9 @@ export default function ServicesSection() {
       desc: "Our Shot blasting is a versatile and effective process for surface preparation, cleaning, and modification.",
     },
     {
-      title: "Powder Coating",
-      icon: Wrench,
-      desc: "Powder Coating offers customized finishes its a preferred choice contributing to product longevity.",
-    },
-    {
       title: "Fabrication",
       icon: BadgeCheck,
-      desc: "Provided best fabrication solutions",
+      desc: "Precision-built aluminium fabrication designed for strength, reliability, and clean finish.",
     },
   ];
 

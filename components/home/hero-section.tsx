@@ -24,7 +24,7 @@ export default function Hero() {
             className="lg:col-span-7"
           >
             <p className="text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-neutral-500">
-              Aluminium Specialists · {years}+ Years
+              Aluminium Specialists · 
             </p>
 
             <h1 className="mt-3 text-5xl lg:text-6xl font-bold tracking-tight">
@@ -58,8 +58,8 @@ export default function Hero() {
             {/* Stats */}
             <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-4 text-sm">
               <div className="rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm hover:border-black">
-                <p className="text-2xl font-semibold">{years}+</p>
-                <p className="text-neutral-600">Years Experience</p>
+                <p className="text-2xl font-semibold">99%</p>
+                <p className="text-neutral-600">On-Time Delivery Rate</p>
               </div>
               <div className="rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm hover:border-black">
                 <p className="text-2xl font-semibold">15+</p>

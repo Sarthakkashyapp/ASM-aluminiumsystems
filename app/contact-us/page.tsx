@@ -16,10 +16,10 @@ const CONTACT = {
   phoneHref: "+918923925982",
   optPhone: "+91 9837840510",
   optPhoneHref: "+919837840510",
-  addressLine1: "Plot 12, Industrial Area",
-  addressLine2: "New Delhi, 110020",
+  addressLine1: "ISKCON Temple, East of Kailash",
+  addressLine2: "New Delhi, Delhi 110065",
   mapQuery:
-    "Plot 12 Industrial Area New Delhi 110020", // used for the Google Maps embed
+    "ISKCON Temple, East of Kailash, New Delhi, Delhi 110065",
 };
 
 export default function ContactPage() {
